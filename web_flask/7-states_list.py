@@ -3,7 +3,6 @@
 A script that starts a Flask web application
 """
 
-
 from flask import Flask, render_template
 from models import storage
 from models import *
@@ -16,7 +15,7 @@ def tearDown(exception):
     storage.close()
 
 
-@app.route("states_list", strict_slashes=False)
+@app.route("/states_list", strict_slashes=False)
 def stateList():
     """Display a HTML page: (inside the tag BODY)"""
     states = sorted(list(storage.all("state").values()), key=lambda x: x.name)
