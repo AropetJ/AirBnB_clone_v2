@@ -35,9 +35,8 @@ class Place(BaseModel, Base):
         longitude = Column(Float, nullable=True)
         reviews = relationship("Review", backref="place")
         amenities = relationship("Amenity", secondary="place_amenity",
-                             backref="place_amenities",
-                             viewonly=False)
-
+                                 backref="place_amenities",
+                                 viewonly=False)
     else:
         city_id = ""
         user_id = ""
@@ -52,7 +51,7 @@ class Place(BaseModel, Base):
         amenity_ids = []
     
     def __init__(self, *args, **kwargs):
-        """initializes Place"""
+        """Initializes Place"""
         super().__init__(*args, **kwargs)
 
     if models.storage_t != 'db':
