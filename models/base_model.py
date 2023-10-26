@@ -1,21 +1,30 @@
 #!/usr/bln/python3
-""" BaseModel class """
+"""
+BaseModel class
+"""
+
 from uuid import uuid4
 from datetime import datetime
 import models
 import sqlalchemy
+from os import getenv
 from sqlalchemy import Column, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 
-Base = declarative_base()
+time = "%Y-%m-%dT%H:%M:%S.%f"
+
+if models.storage_t == "db":
+    Base = declarative_base()
+else:
+    Base = object
 
 
 class BaseModel(object):
     """ Definition for BaseModel class """
-
-    id = Column(String(60), primary_key=True, nullable=False)
-    created_at = Column(DateTime, nullable=False, default=datetime.now)
-    updated_at = Column(DateTime, nullable=False, default=datetime.now)
+    if models.storage_t == "db":
+        id = Column(String(60), primary_key=True, nullable=False)
+        created_at = Column(DateTime, nullable=False, default=datetime.now)
+        updated_at = Column(DateTime, nullable=False, default=datetime.now)
 
     def __init__(self, *args, **kwargs):
         """ Initializes the attributes of the BaseModel class """
