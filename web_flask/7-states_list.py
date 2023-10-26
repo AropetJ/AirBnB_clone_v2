@@ -9,17 +9,17 @@ from models import *
 app = Flask(__name__)
 
 
-@app.teardown_appcontext
-def tearDown(exception):
-    """Closes the storage engine on teardown"""
-    storage.close()
-
-
 @app.route("/states_list", strict_slashes=False)
 def stateList():
     """Display a HTML page: (inside the tag BODY)"""
     states = sorted(list(storage.all("state").values()), key=lambda x: x.name)
     return render_template("7-states_list.html", states=states)
+
+
+@app.teardown_appcontext
+def tearDown(exception):
+    """Closes the storage engine on teardown"""
+    storage.close()
 
 
 if __name__ == "__main__":
