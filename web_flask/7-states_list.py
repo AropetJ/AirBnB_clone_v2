@@ -9,6 +9,7 @@ from models import storage
 from models import *
 app = Flask(__name__)
 
+
 @app.teardown_appcontext
 def tearDown(exception):
     """Closes the storage engine on teardown"""
@@ -20,6 +21,7 @@ def stateList():
     """Display a HTML page: (inside the tag BODY)"""
     states = sorted(list(storage.all("state").values()), key=lambda x: x.name)
     return render_template("7-states_list.html", states=states)
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
