@@ -10,7 +10,6 @@ from models import *
 app = Flask(__name__)
 
 
-
 @app.teardown_appcontext
 def tearDown(exception):
     """Closes the storage engine on teardown"""
@@ -25,6 +24,7 @@ def states(state_id=None):
     if state_id is not None:
         state_id = 'State.' + state_id
     return render_template('9-states.html', states=states, state_id=state_id)
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
