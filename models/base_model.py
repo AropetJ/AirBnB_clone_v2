@@ -1,4 +1,4 @@
-#!/usr/bln/python3
+#!/usr/bin/python3
 """
 BaseModel class
 """
