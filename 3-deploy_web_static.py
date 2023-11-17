@@ -7,11 +7,11 @@ from os import makedirs, path
 from datetime import datetime
 from fabric.api import env, run, local, put
 
-env.hosts = ['107.23.94.198', '35.175.64.25']
+env.hosts = ['52.87.235.76', '54.237.109.97']
 
 
 def do_pack():
-    """ Generates the archive """
+    """ Generates the tgz archive """
     time_stamp = datetime.now().strftime("%Y%m%d%H%M%S")
     fp = "versions/web_static_{}.tgz".format(time_stamp)                                
     try:
